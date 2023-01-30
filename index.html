@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section><h1>Lets begin</h1></section>
+        <section>
+          <section>
+            <h2>1. Create project and install VITE</h2>
+          </section>
+          <section>
+            <ul>
+              <h4 style="color: darkgoldenrod;">Start project on GinHub and VScode</h4>
+              <li class="fragment" data-fragment-index="0">
+                 - Go to github and creat new repository, and copied it.
+              </li>
+              <li class="fragment" data-fragment-index="1">
+                 - Open VScode start terminal and write the commands:
+              </li>
+              <li class="fragment" data-fragment-index="2">
+          <pre><code style="padding: 1rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        git clone your repo
+          </script></code></pre>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <h4 style="color: darkgoldenrod;">Install VITE</h4>
+            <li class="fragment" data-fragment-index="0"> - Open terminal and write the command:
+          <pre><code style="padding: 1rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        npm create vite@latest
+          </script></code></pre>
+              </li>
+              <li class="fragment" data-fragment-index="1"> - Follow the prompts when creating a project </li>
+              <li class="fragment" data-fragment-index="2" style="color: crimson;"> - Be sure to name the project the same as the Git repository  </li>
+              <li class="fragment" data-fragment-index="3"> - After installing the project remove excess file and clean main.ts, style.css ...
+              </li>
+              <li class="fragment" data-fragment-index="4"> - If it folder not initialized as git directory:
+          <pre><code style="padding: 1rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        git init
+          </script></code></pre>
+              </li>
+            </ul>
+            </section>
+          </section>
+        </section>
+        <section>
+          <section><h2>2. Install eslint with airbnb and typescript rules</h2></section>
+          <section>
+            <ul>
+              <h4 style="color: darkgoldenrod;">Again go to the terminal</h4>
+            <li class="fragment" data-fragment-index="0"> - Initialize lint so that we have a file with settings:
+          <pre><code style="padding: 1rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        npx eslint --init
+          </script></code></pre>
+              </li>
+              <li class="fragment" data-fragment-index="1"> - Write several commands at once, 
+                to install dependencies for airbnb and typescript:
+          <pre><code style="padding: 1rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        npx install-peerdeps --dev eslint-config-airbnb
+          </script></code></pre>
+          <pre><code style="padding: 1rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        npm install eslint-config-airbnb-typescript --save-dev
+          </script></code></pre>
+         <pre><code style="padding: 1rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        npm install eslint-plugin-import --save-dev
+          </script></code></pre>
+                 </li>
+                </ul>
+            </section>
+            <section>
+                <ul> - In the extensions tab, find and instal <span style="color: rgb(58, 126, 194);">"ESLint extension"</span>
+              <li class="fragment" data-fragment-index="0"> - Latest step go to <span style="color: darkgoldenrod;">.eslintrc.json</span> and paste this code:
+                <pre><code data-trim data-noescape class="cpp"><script type="text/template">
+                    "overrides": [
+                        {
+                        "extends": [
+                            "eslint:recommended",
+                            "airbnb",
+                            "airbnb-typescript",
+                            "plugin:@typescript-eslint/eslint-recommended",
+                            "plugin:@typescript-eslint/recommended",
+                            "plugin:prettier/recommended",
+                            "plugin:import/recommended",
+                            "plugin:import/typescript"
+                        ],
+                        "files": ["*.ts", "*.tsx"]
+                        }
+                    ],
+                              </script></code></pre>
+                              </li></ul>
+            </section>
+        </section>
+        <section>
+          <section><h2>3. Install prettier</h2></section>
+          <section>
+            <ul>
+              <h4 style="color: darkgoldenrod;">An opinionated code formatter</h4>
+            <li class="fragment" data-fragment-index="0"> - 
+            To install in the terminal, write next code:
+          <pre><code style="padding: 1rem; font-size: 1.12rem;"  data-trim data-noescape class="cpp"><script type="text/template">
+            npm install prettier eslint-config-pretti ereslint-plugin-prettier --save-dev
+          </script></code></pre>
+              </li>
+                <li class="fragment" data-fragment-index="1"> - In the extensions tab, find and instal <span style="color: rgb(58, 126, 194);">"Prettier - Code formatter"</span></li>
+              <li class="fragment" data-fragment-index="2"> - At the root we create <span style="color: darkgoldenrod;">.prettierrc.json</span> and prescribe:
+                <pre><code data-trim data-noescape class="cpp"><script type="text/template">
+                            {
+                            "trailingComma": "es5",
+                            "tabWidth": 2,
+                            "semi": true,
+                            "singleQuote": true
+                            }
+                              </script></code></pre>
+                              </li>
+            </section>
+            <section>
+            <ul>
+              <h4 style="color: darkgoldenrod;">Adding Dependencies and settings</h4>
+              <li class="fragment" data-fragment-index="0"> - In <span style="color: darkgoldenrod;">".eslintrc.json"</span>added into script:
+                <pre><code data-trim data-noescape class="cpp"><script type="text/template">
+                    "plugins": ["@typescript-eslint", "prettier"],
+                    "parser": "@typescript-eslint/parser",
+                    "parserOptions": {
+                        "ecmaVersion": "latest",
+                        "sourceType": "module",
+                        "project": "tsconfig.json"
+                    },
+                              </script></code></pre>
+                              </li>
+              <li class="fragment" data-fragment-index="1"> - In <span style="color: darkgoldenrod;">"package.json"</span>added into script:
+                <pre><code data-trim data-noescape class="cpp"><script type="text/template">
+
+                    "prettier": "prettier",
+                    "lint": "eslint . --ext .ts",
+                    "lint-and-fix": "eslint . --ext .ts --fix",
+                    "format": "prettier --ignore-path .gitignore --write '**/*.+(js|ts|json)'",
+                    }
+                              </script></code></pre>
+                              </li>
+            </section>
+            <section>
+            <ul>
+              <h4 style="color: darkgoldenrod;">Adding settings into VScode for automatic work Prettier</h4>
+              <li class="fragment" data-fragment-index="0"> - To open <span style="color: darkgoldenrod;">settings.json</span>, while in VS Code, press <span style="color: rgb(71, 131, 226);">Ctrl + Shift + P</span>, search for "settings" and select <span style="color: darkgoldenrod;">"open settings (JSON)"</span>.
+                              </li>
+                <li class="fragment" data-fragment-index="1"> - Adding next rules into this settings:
+          <pre><code style="padding: 1rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        "editor.defaultFormatter": "esbenp.prettier-vscode",
+                        "editor.formatOnSave": true
+          </script></code></pre>
+              </li>
+            <li class="fragment" data-fragment-index="2"> -  Again press <span style="color: rgb(71, 131, 226);">Ctrl + Shift + P</span>, then <span style="color: darkgoldenrod;">"open setting(UI)"</span> and in the search write "Formatter". Editor: Default Formatter set: <span style="color: rgb(71, 131, 226);">Prettier Code Formatter</span>
+
+                </li>
+             </section>
+              </section>
+        <section>
+            <section><h2>4. Install husky. What is it?!</h2></section>
+            <section>
+            <ul>
+              <h4 style="color: darkgoldenrod;">Precommit code checker and fixer</h4>
+            <li class="fragment" data-fragment-index="0"> - Initialize and installing:
+          <pre><code style="padding: 1rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        npx husky-init && npm install
+          </script></code></pre>
+              </li>
+              <li class="fragment" data-fragment-index="1"> - Adding code into file pre-commit (automaticlly):
+          <pre><code style="padding: 1rem; font-size: 1.15rem;" data-trim data-noescape class="cpp"><script type="text/template">
+npx husky set .husky/pre-commit "npm run format && npm run lint --fix"
+          </script></code></pre>
+                 </li>
+                </ul>
+            </section>
+        </section>
+                <section>
+            <section><h2>5. Install TailwindCSS with vite (optional).</h2></section>
+            <section>
+            <ul>
+              <h4 style="color: darkgoldenrod;">TailwindCSS - CSS framework</h4>
+            <li class="fragment" data-fragment-index="0"> - Initialize and installing:
+          <pre><code style="padding: 1rem; font-size: 1.15rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        npm install -D tailwindcss postcss autoprefixer
+          </script></code></pre>
+                    <pre><code style="padding: 1rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        npx tailwindcss init -p
+          </script></code></pre>
+              </li>
+            <li class="fragment" data-fragment-index="1"> - Add Tailwind Directives to Your CSS:
+          <pre><code style="padding: 1rem; font-size: 1.15rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        @tailwind base;
+                        @tailwind components;
+                        @tailwind utilities;
+          </script></code></pre>
+                 </li>
+                  <li class="fragment" data-fragment-index="2"> - In the extensions tab, find and instal <span style="color: rgb(58, 126, 194);">"Tailwind CSS IntelliSense"</span></li>
+                </ul>
+            </section>
+            <section>
+                <div style="text-align: left;"> - Add the paths to all your template files to the <span style="color: darkgoldenrod;">tailwind.config.cjs</span> file:
+          <pre><code style="padding: 1rem; font-size: 1.15rem;" data-trim data-noescape class="cpp"><script type="text/template">
+                        /** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+          </script></code></pre>
+                 </div>
+            </section>
+        </section>
+                <section>
+            <section><h2>6. Deploy project on netlify.com together with Github.</h2></section>
+            <section>
+            <ul>
+              <h4 style="color: darkgoldenrod;">netlify - Project publishing platform.</h4>
+            <li class="fragment" data-fragment-index="0"> - Register on <a style="color: rgb(71, 131, 226);">https://www.netlify.com</a> with GitHub account
+              </li>
+              <li class="fragment" data-fragment-index="1"> - Click <span style="color: rgb(71, 131, 226);">"Add new site"</span> and choose "Import an existing project". On next page choose GitHub.
+                 </li>
+              <li class="fragment" data-fragment-index="2"> - Next, select the repository and the branch from which we will deploy. <span style="color: rgb(255, 255, 0);">PROFIT!</span>
+                 </li>
+                </ul>
+            </section>
+        </section>
+        <section><h2>THE END</h2></section>
+    </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+    <script src="plugin/copycode/copycode.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        copycode: {
+          plaintextonly: true,
+          copy: 'Copy',
+          copied: 'Copied!',
+          timeout: 1000,
+          copybg: 'orange',
+          copiedbg: 'green',
+          copycolor: 'black',
+          copiedcolor: 'white',
+          csspath: '',
+          clipboardjspath: '',
+        },
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, CopyCode],
+      });
+    </script>
+  </body>
+</html>
+
